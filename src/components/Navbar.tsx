@@ -1,4 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import Link from "@/components/Link";
+import Logo from "@/components/Logo";
+import ThemeToggle from "@/components/ThemeToggle";
 import { Search, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
@@ -19,10 +22,9 @@ const Navbar = () => {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-              <span className="text-sm font-bold text-primary-foreground">IH</span>
+            <div className="flex items-center">
+              <Logo compact />
             </div>
-            <span className="text-lg font-semibold tracking-tight">readtech</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => (
@@ -45,6 +47,7 @@ const Navbar = () => {
           >
             <Search className="h-4 w-4" />
           </Link>
+          <ThemeToggle />
           {user ? (
             <Link
               to="/dashboard"
@@ -61,7 +64,7 @@ const Navbar = () => {
                 Sign in
               </Link>
               <Link
-                to="/login"
+                to="/login?signup=1"
                 className="hidden md:inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
                 Sign up
@@ -99,7 +102,7 @@ const Navbar = () => {
               </Link>
             ) : (
               <Link
-                to="/login"
+                to="/login?signup=0"
                 className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground"
                 onClick={() => setMobileOpen(false)}
               >

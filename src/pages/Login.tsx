@@ -1,12 +1,17 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import Link from "@/components/Link";
 import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 
 const Login = () => {
-  const [isSignUp, setIsSignUp] = useState(false);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const defaultSignUp =
+    searchParams.get("signup") === "1" || searchParams.get("signup") === "true" || searchParams.get("mode") === "signup";
+  const [isSignUp, setIsSignUp] = useState<boolean>(defaultSignUp);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,6 +20,13 @@ const Login = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { toast } = useToast();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const fromUrl =
+      params.get("signup") === "1" || params.get("signup") === "true" || params.get("mode") === "signup";
+    if (fromUrl !== isSignUp) setIsSignUp(fromUrl);
+  }, [location.search]);
 
   if (user) {
     navigate("/dashboard", { replace: true });
@@ -130,8 +142,15 @@ const Login = () => {
         </form>
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
-          {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
-          <button onClick={() => setIsSignUp(!isSignUp)} className="font-medium text-primary hover:underline">
+          {isSignUp ? "Already have an account?" : "Don't have an account?"} {" "}
+          <button
+            onClick={() => {
+              const next = !isSignUp;
+              setIsSignUp(next);
+              navigate(`/login?signup=${next ? 1 : 0}`);
+            }}
+            className="font-medium text-primary hover:underline"
+          >
             {isSignUp ? "Sign in" : "Sign up"}
           </button>
         </p>

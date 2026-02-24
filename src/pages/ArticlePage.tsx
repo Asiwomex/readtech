@@ -1,4 +1,6 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Link from "@/components/Link";
+import ReadProgress from "@/components/ReadProgress";
 import { Heart, Bookmark, Share2, ArrowLeft, Eye } from "lucide-react";
 import { useState } from "react";
 import { posts } from "@/data/mockData";
@@ -55,10 +57,17 @@ const ArticlePage = () => {
 
   return (
     <article className="pb-16">
-      {/* Cover */}
-      <div className="aspect-[2/1] sm:aspect-[3/1] w-full overflow-hidden">
-        <img src={post.coverImage} alt={post.title} className="h-full w-full object-cover" />
-      </div>
+      <ReadProgress />
+          {/* Cover */}
+          <div className="aspect-[2/1] sm:aspect-[3/1] w-full overflow-hidden">
+            <img
+              src={post.coverImage}
+              alt={post.title}
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
+          </div>
 
       <div className="container max-w-3xl px-4 sm:px-6">
         <Link to="/" className="mt-6 sm:mt-8 mb-6 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">

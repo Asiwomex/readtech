@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "@/components/Link";
 import { authors, posts } from "@/data/mockData";
 
 const Authors = () => {
@@ -17,7 +17,7 @@ const Authors = () => {
               to={`/author/${author.id}`}
               className="group flex items-start gap-4 rounded-lg border border-border bg-card p-6 transition-colors hover:border-primary/40"
             >
-              <img src={author.avatar} alt={author.name} className="h-12 w-12 rounded-full object-cover" />
+              <img src={author.avatar} alt={author.name} loading="lazy" decoding="async" className="h-12 w-12 rounded-full object-cover" />
               <div>
                 <h2 className="font-semibold group-hover:text-primary">{author.name}</h2>
                 <p className="mt-0.5 text-sm text-muted-foreground">{author.role}</p>

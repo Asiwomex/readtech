@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "@/components/Link";
 import { Heart, Eye } from "lucide-react";
 import type { Post } from "@/data/mockData";
 
@@ -11,7 +11,7 @@ const ArticleCard = ({ post, variant = "default" }: ArticleCardProps) => {
   if (variant === "featured") {
     return (
       <Link to={`/article/${post.slug}`} className="group block">
-        <article className="grid gap-6 md:grid-cols-2 overflow-hidden rounded-xl border border-border bg-card transition-all hover:shadow-md">
+        <article className="card grid gap-6 md:grid-cols-2 overflow-hidden rounded-xl border border-border bg-card transition-all hover:shadow-xl">
           <div className="aspect-[16/10] overflow-hidden">
             <img
               src={post.coverImage}
@@ -35,7 +35,7 @@ const ArticleCard = ({ post, variant = "default" }: ArticleCardProps) => {
             </p>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <img src={post.author.avatar} alt={post.author.name} className="h-8 w-8 rounded-full object-cover" />
+                <img src={post.author.avatar} alt={post.author.name} loading="lazy" decoding="async" className="h-8 w-8 rounded-full object-cover" />
                 <div>
                   <p className="text-sm font-medium">{post.author.name}</p>
                   <p className="text-xs text-muted-foreground">{post.createdAt}</p>
@@ -58,7 +58,7 @@ const ArticleCard = ({ post, variant = "default" }: ArticleCardProps) => {
 
   return (
     <Link to={`/article/${post.slug}`} className="group block">
-      <article className="overflow-hidden rounded-xl border border-border bg-card transition-all hover:shadow-md">
+      <article className="card overflow-hidden rounded-xl border border-border bg-card transition-all hover:shadow-xl">
         <div className="aspect-[16/10] overflow-hidden">
           <img
             src={post.coverImage}
@@ -82,7 +82,7 @@ const ArticleCard = ({ post, variant = "default" }: ArticleCardProps) => {
           </p>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src={post.author.avatar} alt={post.author.name} className="h-7 w-7 rounded-full object-cover" />
+              <img src={post.author.avatar} alt={post.author.name} loading="lazy" decoding="async" className="h-7 w-7 rounded-full object-cover" />
               <div>
                 <p className="text-sm font-medium">{post.author.name}</p>
                 <p className="text-xs text-muted-foreground">{post.createdAt}</p>

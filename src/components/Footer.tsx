@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import Link from "@/components/Link";
+import Logo from "@/components/Logo";
 
 const Footer = () => (
   <footer className="border-t border-border bg-surface-subtle">
@@ -6,10 +7,7 @@ const Footer = () => (
       <div className="grid gap-8 md:grid-cols-4">
         <div>
           <Link to="/" className="flex items-center gap-2 mb-3">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary">
-              <span className="text-xs font-bold text-primary-foreground">IH</span>
-            </div>
-            <span className="font-semibold">readtech</span>
+            <Logo />
           </Link>
           <p className="text-sm text-muted-foreground leading-relaxed">
             A structured knowledge platform for engineering teams and research institutions.

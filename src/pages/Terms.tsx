@@ -2,7 +2,7 @@ const Terms = () => (
   <div className="container px-4 sm:px-6 py-14">
     <div className="max-w-3xl mx-auto prose-article">
       <h1 className="text-3xl font-bold mb-2">Terms of Service</h1>
-      <p className="text-sm text-muted-foreground mb-8">Last updated: February 23, 2026</p>
+      <p className="text-sm text-muted-foreground mb-8 no-drop">Last updated: February 23, 2026</p>
       <h2>1. Acceptance of Terms</h2>
       <p>By accessing or using Readtech, you agree to be bound by these Terms of Service. If you do not agree to these terms, you may not use the platform.</p>
 
