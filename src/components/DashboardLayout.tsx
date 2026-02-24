@@ -1,4 +1,6 @@
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import Link from "@/components/Link";
+import Logo from "@/components/Logo";
 import { LayoutDashboard, FileText, PenSquare, Settings, LogOut, Menu, X, Users } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
@@ -73,11 +75,9 @@ const DashboardLayout = () => {
       <aside className="hidden w-64 shrink-0 border-r border-border bg-surface-subtle md:flex md:flex-col">
         <div className="flex h-16 items-center px-6 border-b border-border">
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary">
-              <span className="text-xs font-bold text-primary-foreground">IH</span>
-            </div>
-            <span className="font-semibold text-sm">readtech</span>
-          </Link>
+              <Logo compact />
+              <span className="font-semibold text-sm">readtech</span>
+            </Link>
         </div>
         <SidebarContent />
       </aside>

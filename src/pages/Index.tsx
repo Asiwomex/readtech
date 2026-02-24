@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
+import Fuse from "fuse.js";
 import { posts, categories } from "@/data/mockData";
 import ArticleCard from "@/components/ArticleCard";
+import FeaturedCarousel from "@/components/FeaturedCarousel";
+import Link from "@/components/Link";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Index = () => {
@@ -19,6 +22,19 @@ const Index = () => {
 
   const featuredPost = posts[0];
   const remainingPosts = filteredPosts.filter((p) => p.id !== featuredPost.id);
+
+  const fuse = useMemo(() => {
+    return new Fuse(posts, {
+      keys: ["title", "excerpt", "content", "author.name", "category.name"],
+      threshold: 0.35,
+      includeScore: true,
+    });
+  }, []);
+
+  const suggestions = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    return fuse.search(searchQuery).slice(0, 5).map((r) => r.item);
+  }, [searchQuery, fuse]);
 
   return (
     <div>
@@ -45,8 +61,23 @@ const Index = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="h-11 w-full rounded-lg border border-border bg-background pl-10 pr-4 text-sm outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
               />
+              {suggestions.length > 0 && (
+                <div className="absolute left-0 right-0 mt-2 rounded-lg border border-border bg-card shadow-lg z-20">
+                  {suggestions.map((s) => (
+                    <Link
+                      key={s.id}
+                      to={`/article/${s.slug}`}
+                      className="block px-3 py-2 text-sm hover:bg-secondary"
+                      onClick={() => setSearchQuery("")}
+                    >
+                      {s.title}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
+          {/* illustration removed */}
         </div>
       </section>
 
@@ -56,7 +87,7 @@ const Index = () => {
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-lg font-semibold">Featured</h2>
           </div>
-          <ArticleCard post={featuredPost} variant="featured" />
+          <FeaturedCarousel posts={posts.slice(0, 4)} />
         </section>
       )}
 

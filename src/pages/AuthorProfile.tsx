@@ -1,4 +1,5 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Link from "@/components/Link";
 import { authors, posts } from "@/data/mockData";
 import ArticleCard from "@/components/ArticleCard";
 
@@ -19,7 +20,7 @@ const AuthorProfile = () => {
   return (
     <div className="container py-12">
       <div className="mb-12 flex flex-col items-center text-center md:flex-row md:items-start md:text-left md:gap-8">
-        <img src={author.avatar} alt={author.name} className="h-24 w-24 rounded-full object-cover mb-4 md:mb-0" />
+        <img src={author.avatar} alt={author.name} loading="lazy" decoding="async" className="h-24 w-24 rounded-full object-cover mb-4 md:mb-0" />
         <div>
           <h1 className="text-2xl font-bold mb-1">{author.name}</h1>
           <p className="text-sm text-muted-foreground mb-3">{author.role}</p>
