@@ -3,48 +3,51 @@ const Privacy = () => (
     <div className="max-w-3xl mx-auto prose-article">
       <h1 className="text-3xl font-bold mb-2">Privacy Policy</h1>
       <p className="text-sm text-muted-foreground mb-8">Last updated: February 23, 2026</p>
+      <h2>1. Introduction</h2>
+      <p>Readtech is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use the platform.</p>
 
-      <h2>1. Information We Collect</h2>
-      <p>When you create an account on readtech, we collect your name, email address, and any profile information you choose to provide. We also automatically collect usage data such as pages visited, articles read, and interaction patterns to improve our service.</p>
-
-      <h2>2. How We Use Your Information</h2>
-      <p>We use the information we collect to:</p>
+      <h2>2. Information We Collect</h2>
+      <p>We may collect the following types of information:</p>
       <ul>
-        <li>Provide, maintain, and improve the readtech platform</li>
-        <li>Personalize your experience and deliver relevant content</li>
-        <li>Send you notifications about comments, likes, and other activity related to your account</li>
-        <li>Monitor and analyze usage trends to enhance our features</li>
-        <li>Protect the security and integrity of our platform</li>
+        <li>Personal information such as name and email address when you register an account</li>
+        <li>Profile information you voluntarily provide</li>
+        <li>Content you publish, comment on, or interact with</li>
+        <li>Technical information such as IP address, browser type, device information, and usage data</li>
       </ul>
 
-      <h2>3. Information Sharing</h2>
-      <p>We do not sell, trade, or rent your personal information to third parties. We may share anonymized, aggregated data for analytics purposes. Your public profile information (name, avatar, bio) is visible to other users of the platform.</p>
-
-      <h2>4. Data Security</h2>
-      <p>We implement industry-standard security measures including encryption in transit (TLS/SSL), encrypted data at rest, and role-based access controls. While we strive to protect your information, no method of electronic transmission or storage is 100% secure.</p>
-
-      <h2>5. Cookies and Tracking</h2>
-      <p>readtech uses essential cookies for authentication and session management. We do not use third-party advertising trackers. Analytics cookies are used solely to understand platform usage and improve the user experience.</p>
-
-      <h2>6. Your Rights</h2>
-      <p>You have the right to:</p>
+      <h2>3. How We Use Your Information</h2>
+      <p>We use collected information to:</p>
       <ul>
-        <li>Access and download your personal data</li>
-        <li>Correct inaccurate information in your profile</li>
-        <li>Request deletion of your account and associated data</li>
-        <li>Opt out of non-essential communications</li>
+        <li>Provide and maintain platform functionality</li>
+        <li>Authenticate users and manage accounts</li>
+        <li>Improve performance and user experience</li>
+        <li>Monitor platform usage and security</li>
+        <li>Communicate important updates</li>
       </ul>
+
+      <h2>4. Cookies and Tracking</h2>
+      <p>Readtech may use cookies and similar technologies to maintain sessions, remember preferences, and analyze usage. You may disable cookies through your browser settings; however, certain features may not function properly.</p>
+
+      <h2>5. Data Sharing</h2>
+      <p>We do not sell or trade personal information. Information may be shared with trusted service providers such as hosting platforms, analytics providers, or authentication services solely for operational purposes.</p>
+
+      <h2>6. Data Security</h2>
+      <p>We implement reasonable technical and organizational measures to protect user data, including encrypted connections and secure authentication practices. However, no online system can guarantee absolute security.</p>
 
       <h2>7. Data Retention</h2>
-      <p>We retain your account data for as long as your account is active. If you request account deletion, we will remove your personal data within 30 days, except where retention is required by law or for legitimate business purposes.</p>
+      <p>We retain personal information for as long as necessary to provide services, comply with legal obligations, resolve disputes, and enforce agreements. Users may request account deletion at any time.</p>
 
-      <h2>8. Children's Privacy</h2>
-      <p>readtech is not intended for users under the age of 13. We do not knowingly collect personal information from children.</p>
+      <h2>8. User Rights</h2>
+      <p>Depending on your jurisdiction, you may have the right to access, correct, or request deletion of your personal data. Requests can be submitted using the contact information below.</p>
 
-      <h2>9. Changes to This Policy</h2>
-      <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on this page and updating the "Last updated" date.</p>
+      <h2>9. Children's Privacy</h2>
+      <p>Readtech does not knowingly collect personal information from individuals under the age of 13.</p>
 
-      <h2>10. Contact Us</h2>
+      <h2>10. Policy Updates</h2>
+      <p>We may update this Privacy Policy periodically. Continued use of the platform after changes are posted constitutes acceptance of the revised policy.</p>
+
+      <h2>11. Contact</h2>
+
       <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:iamasiwome@gmail.com">iamasiwome@gmail.com</a>.</p>
     </div>
   </div>
