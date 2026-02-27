@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Bold, Italic, Heading2, List, ListOrdered, Quote, Code, Image, Link2 } from "lucide-react";
 import { categories } from "@/data/mockData";
+import { createPost, uploadImage } from "@/integrations/supabase/api";
+import { useToast } from "@/hooks/use-toast";
 
 const toolbarButtons = [
   { icon: Heading2, label: "Heading" },
@@ -18,6 +20,7 @@ const NewPost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isPublished, setIsPublished] = useState(false);
+  const { toast } = useToast();
 
   return (
     <div className="max-w-3xl">
@@ -33,10 +36,30 @@ const NewPost = () => {
             />
             <span className="text-muted-foreground">Publish</span>
           </label>
-          <button className="rounded-md border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors">
+          <button
+            onClick={async () => {
+              try {
+                await createPost({ title, slug: title.toLowerCase().replace(/[^a-z0-9]+/g, "-"), content, excerpt: "" , published: false});
+                toast({ title: "Saved", description: "Draft saved." });
+              } catch (e: any) {
+                toast({ title: "Error", description: e.message || "Could not save draft." });
+              }
+            }}
+            className="rounded-md border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary transition-colors"
+          >
             Save Draft
           </button>
-          <button className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+          <button
+            onClick={async () => {
+              try {
+                await createPost({ title, slug: title.toLowerCase().replace(/[^a-z0-9]+/g, "-"), content, excerpt: "", published: isPublished });
+                toast({ title: isPublished ? "Published" : "Saved", description: isPublished ? "Post published." : "Post saved." });
+              } catch (e: any) {
+                toast({ title: "Error", description: e.message || "Could not save post." });
+              }
+            }}
+            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
             {isPublished ? "Publish" : "Save"}
           </button>
         </div>
