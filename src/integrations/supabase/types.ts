@@ -14,6 +14,53 @@ export type Database = {
   }
   public: {
     Tables: {
+      posts: {
+        Row: {
+          id: string
+          author: string | null
+          title: string
+          slug: string
+          content: string | null
+          excerpt: string | null
+          cover_url: string | null
+          published: boolean | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          author?: string | null
+          title: string
+          slug: string
+          content?: string | null
+          excerpt?: string | null
+          cover_url?: string | null
+          published?: boolean | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          author?: string | null
+          title?: string
+          slug?: string
+          content?: string | null
+          excerpt?: string | null
+          cover_url?: string | null
+          published?: boolean | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "posts_author_fkey"
+            columns: ["author"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null
